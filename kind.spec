@@ -3,7 +3,7 @@
 
 Name: kind
 Version: v0.9.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary: Kubernetes IN Docker - local clusters for testing Kubernetes.
 
 License: Apache License 2.0
@@ -20,7 +20,6 @@ kind is a tool for running local Kubernetes clusters using Docker container "nod
 
 
 %build
-%configure
 %make_build
 
 
