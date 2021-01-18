@@ -3,7 +3,7 @@
 # https://github.com/kubernetes-sigs/kind
 %global goipath         github.com/kubernetes-sigs/kind
 Version:                v0.9.0
-
+%global tag v0.9.0
 %gometa
 
 %global common_description %{expand:
@@ -12,7 +12,7 @@ Kubernetes IN Docker - local clusters for testing Kubernetes.}
 %global golicenses      LICENSE
 %global godocs          README.md OWNERS
 
-Name:           %{goname}
+Name:           kind
 Release:        1%{?dist}
 Summary:        Kubernetes IN Docker - local clusters for testing Kubernetes
 
