@@ -3,7 +3,7 @@
 
 Name: kind
 Version: v0.9.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary: Kubernetes IN Docker - local clusters for testing Kubernetes.
 
 License: Apache License 2.0
@@ -12,7 +12,7 @@ Source0: https://github.com/kubernetes-sigs/kind/archive/%{commit0}.tar.gz
 
 ExclusiveArch: x86_64
 
-BuildRequires: golang
+BuildRequires: golang git
 
 %description
 kind is a tool for running local Kubernetes clusters using Docker container "nodes".
