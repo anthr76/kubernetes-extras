@@ -17,14 +17,11 @@ Requires:  %{name} = %{version}-%{release}
 }
 
 Name:           %{goname}
-Release:        5%{?dist}
+Release:        7%{?dist}
 Summary:        Kubernetes IN Docker - local clusters for testing Kubernetes.
 License:        %{golicenses}
 URL:            %{gourl}
 Source0:        %{gosource}
-
-%generate_buildrequires
-%go_generate_buildrequires
 
 %description
 %{common_description}
@@ -33,6 +30,9 @@ Source0:        %{gosource}
 
 %prep
 %goprep
+
+%generate_buildrequires
+%go_generate_buildrequires
 
 %build
 for cmd in cmd/* ; do
@@ -56,3 +56,6 @@ install -m 0755 -vp %{gobuilddir}/bin/* %{buildroot}%{_bindir}/
 
 %changelog
 * Sun Jan 17 2021 Anthony Rabbito <hello@anthonyrabbito.com> - 0.9.0
+v0.9.0 Focuses on stability enhancements following v0.8.0 / v0.8.1, a new wave of features will ship in v0.10.0.
+
+Breaking changes have been kept to a minimum, primarily that Kubernetes v1.12.X is no longer supported to make way for some fixes requiring beta-grade kubeadm.
