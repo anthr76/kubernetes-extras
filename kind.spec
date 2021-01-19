@@ -18,12 +18,10 @@ Kubernetes IN Docker - local clusters for testing Kubernetes.}
 %global godocs          README.md OWNERS
 
 
-Name:           kind
-Release:        10%{?dist}
-Summary:        Kubernetes IN Docker - local clusters for testing Kubernetes
-
-License:        ASL 2.0
-
+Name:           %{goname}
+Release:        8%{?dist}
+Summary:        Kubernetes IN Docker - local clusters for testing Kubernetes.
+License:        %{golicenses}
 URL:            %{gourl}
 Source0:        %{gosource}
 
@@ -241,6 +239,15 @@ BuildRequires:  golang(sigs.k8s.io/kind/pkg/internal/integration)
 %else
 %goprep
 %endif
+
+BuildRequires: golang(https://github.com/alessio/shellescape)
+BuildRequires: golang(https://github.com/golangci/golangci-lint/cmd/golangci-lint)
+BuildRequires: golang(https://github.com/golangci/golangci-lint/tree/master/cmd/golangci-lint)
+BuildRequires: golang(https://github.com/gotestyourself/gotestsum)
+BuildRequires: golang(https://github.com/kubernetes/code-generator/tree/master/cmd/deepcopy-gen)
+
+%generate_buildrequires
+%go_generate_buildrequires
 
 %build
 for cmd in cmd/* ; do
