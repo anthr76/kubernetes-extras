@@ -1,8 +1,10 @@
 %bcond_with check
 
 %global goipath         sigs.k8s.io/kind
-%global forgeurl 	https://github.com/kubernetes-sigs/kind
-%global tag 		v0.9.0
+%global forgeurl	https://github.com/kubernetes-sigs/kind
+%global tag		v0.9.0
+
+Version:		0.9.0
 
 %gometa
 
@@ -13,17 +15,17 @@ Kubernetes IN Docker - local clusters for testing Kubernetes.}
 %global godocs          README.md OWNERS
 
 Name:           kind
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Kubernetes IN Docker - local clusters for testing Kubernetes
 
 License:        ASL 2.0
-
-Version:	v0.9.0
 
 URL:            %{gourl}
 Source0:        %{gosource}
 
 BuildRequires: golang >= 1.14
+
+# HACK: These aren't correctly resolving or need to be packaged in copr.
 BuildRequires: golang(github.com/golangci/lint-1)
 BuildRequires: golang(github.com/alessio/shellescape)
 BuildRequires: golang-gotest-devel
@@ -91,6 +93,7 @@ install -m 0755 -vp %{gobuilddir}/bin/* %{buildroot}%{_bindir}/
 %gopkgfiles
 
 %changelog
+* Tue Jan 19 00:19:00 EST 2021 anthr76 <hello@anthonyrabbito.com> - 0.9.0-2
+- Change versioning schema
 * Mon Jan 18 17:39:05 EST 2021 anthr76 <hello@anthonyrabbito.com> - 0.9.0-1
 - Initial package
-
