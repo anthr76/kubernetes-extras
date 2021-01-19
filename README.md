@@ -6,7 +6,7 @@ TO-DO:
 - Add OBS repo for OpenSUSE Tumbleweed based on SUSE packaging guidelines
 - Add flatpak repo for CLI tool based applications
 - Automate version releases
-- Make upstream projects
+- Make upstream projects aware
 
 ## Current packages
 
