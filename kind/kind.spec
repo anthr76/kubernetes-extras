@@ -15,7 +15,7 @@ Kubernetes IN Docker - local clusters for testing Kubernetes.}
 %global godocs          README.md OWNERS
 
 Name:           kind
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Kubernetes IN Docker - local clusters for testing Kubernetes
 
 License:        ASL 2.0
@@ -98,10 +98,22 @@ install -D -p -m 0644 %{S:3} %{buildroot}%{_datadir}/fish/completions/kind.fish
 %doc code-of-conduct.md CONTRIBUTING.md README.md
 %doc %{godocs}
 %{_bindir}/*
+# filesystem owns all the parent directories here
+%{_datadir}/bash-completion/completions/kind
+# own parent directories in case zsh is not installed
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_kind
+# own parent directories in case fish is not installed
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/completions
+%{_datadir}/fish/completions/kind.fish
 
 %gopkgfiles
 
 %changelog
+* Tue Jan 19 18:24:00 EST 2021 anthr76 <hello@anthonyrabbito.com> - 0.9.0-4
+- Let filesystem own shell completions incase they're not installed.
 * Tue Jan 19 18:07:00 EST 2021 anthr76 <hello@anthonyrabbito.com> - 0.9.0-3
 - Add shell completions
 * Tue Jan 19 00:19:00 EST 2021 anthr76 <hello@anthonyrabbito.com> - 0.9.0-2
