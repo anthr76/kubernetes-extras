@@ -23,6 +23,7 @@ Source0:        %{gosource}
 
 BuildRequires: golang >= 1.14
 BuildRequires: golang(github.com/golangci/lint-1)
+BuildRequires: copr://anthr76/golang-github-alessio-shellescape
 
 %if %{with check}
 # Tests
