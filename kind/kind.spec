@@ -15,7 +15,7 @@ Kubernetes IN Docker - local clusters for testing Kubernetes.}
 %global godocs          README.md OWNERS
 
 Name:           kind
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Kubernetes IN Docker - local clusters for testing Kubernetes
 
 License:        ASL 2.0
