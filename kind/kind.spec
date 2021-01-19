@@ -23,6 +23,10 @@ License:        ASL 2.0
 URL:            %{gourl}
 Source0:        %{gosource}
 
+Source1:	bash-completion
+Source2:	zsh-completion
+Source3:	fish-completion
+
 BuildRequires: golang >= 1.14
 
 # HACK: These aren't correctly resolving or need to be packaged in copr.
@@ -79,6 +83,11 @@ done
 install -m 0755 -vd                     %{buildroot}%{_bindir}
 install -m 0755 -vp %{gobuilddir}/bin/* %{buildroot}%{_bindir}/
 
+# shell completion
+install -D -p -m 0644 %{S:1} %{buildroot}%{_datadir}/bash-completion/completions/kind
+install -D -p -m 0644 %{S:2} %{buildroot}%{_datadir}/zsh/site-functions/_kind
+install -D -p -m 0644 %{S:3} %{buildroot}%{_datadir}/fish/completions/kind.fish
+
 %if %{with check}
 %check
 %gocheck
@@ -93,6 +102,8 @@ install -m 0755 -vp %{gobuilddir}/bin/* %{buildroot}%{_bindir}/
 %gopkgfiles
 
 %changelog
+* Tue Jan 19 18:07:00 EST 2021 anthr76 <hello@anthonyrabbito.com> - 0.9.0-3
+- Add shell completions
 * Tue Jan 19 00:19:00 EST 2021 anthr76 <hello@anthonyrabbito.com> - 0.9.0-2
 - Change versioning schema
 * Mon Jan 18 17:39:05 EST 2021 anthr76 <hello@anthonyrabbito.com> - 0.9.0-1
