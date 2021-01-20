@@ -1,12 +1,21 @@
-%bcond_with check
+%bcond_without check
+%bcond_without snapshot
 
 %global goipath         sigs.k8s.io/kind
 %global forgeurl	https://github.com/kubernetes-sigs/kind
-%global tag		v0.9.0
 
-Version:		0.9.0
 
+%if %{with snapshot}
+%global commit          ee165688557465ff456077293061f344b05b130f
 %gometa
+Version:                0
+Release:        	1%{?dist}
+%else
+%global tag             v0.9.0
+%gometa
+Version:                0.9.0
+Release:        	5%{?dist}
+%endif
 
 %global common_description %{expand:
 Kubernetes IN Docker - local clusters for testing Kubernetes.}
@@ -15,7 +24,6 @@ Kubernetes IN Docker - local clusters for testing Kubernetes.}
 %global godocs          README.md OWNERS
 
 Name:           kind
-Release:        4%{?dist}
 Summary:        Kubernetes IN Docker - local clusters for testing Kubernetes
 
 License:        ASL 2.0
@@ -58,10 +66,9 @@ BuildRequires:  golang(k8s.io/klog)
 BuildRequires:  golang(k8s.io/utils/net)
 
 %if %{with check}
-# Tests
-BuildRequires:  golang(sigs.k8s.io/kind/pkg/internal/assert)
-BuildRequires:  golang(sigs.k8s.io/kind/pkg/internal/integration)
+BuildRequires: podman
 %endif
+
 
 %description
 %{common_description}
@@ -112,6 +119,10 @@ install -D -p -m 0644 %{S:3} %{buildroot}%{_datadir}/fish/completions/kind.fish
 %gopkgfiles
 
 %changelog
+* Tue Jan 19 21:46:00 EST 2021 anthr76 <hello@anthonyrabbito.com> - 0-1
+- Add a snapshot.
+* Tue Jan 19 20:12:00 EST 2021 anthr76 <hello@anthonyrabbito.com> - 0.9.0-5
+- Add snapshot support, and enable checks.
 * Tue Jan 19 18:24:00 EST 2021 anthr76 <hello@anthonyrabbito.com> - 0.9.0-4
 - Let filesystem own shell completions incase they're not installed.
 * Tue Jan 19 18:07:00 EST 2021 anthr76 <hello@anthonyrabbito.com> - 0.9.0-3
