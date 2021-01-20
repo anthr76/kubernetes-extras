@@ -1,4 +1,4 @@
-%bcond_without check
+%bcond_with check
 %bcond_without snapshot
 
 %global goipath         sigs.k8s.io/kind
@@ -9,12 +9,12 @@
 %global commit          ee165688557465ff456077293061f344b05b130f
 %gometa
 Version:                0
-Release:        	1%{?dist}
+Release:        	2%{?dist}
 %else
 %global tag             v0.9.0
-%gometa
 Version:                0.9.0
-Release:        	5%{?dist}
+%gometa
+Release:        	6%{?dist}
 %endif
 
 %global common_description %{expand:
@@ -67,6 +67,7 @@ BuildRequires:  golang(k8s.io/utils/net)
 
 %if %{with check}
 BuildRequires: podman
+BuildRequires: systemd
 %endif
 
 
@@ -95,6 +96,7 @@ install -D -p -m 0644 %{S:1} %{buildroot}%{_datadir}/bash-completion/completions
 install -D -p -m 0644 %{S:2} %{buildroot}%{_datadir}/zsh/site-functions/_kind
 install -D -p -m 0644 %{S:3} %{buildroot}%{_datadir}/fish/completions/kind.fish
 
+# Disabling due to Docker deps. Will revist.
 %if %{with check}
 %check
 %gocheck
@@ -119,6 +121,10 @@ install -D -p -m 0644 %{S:3} %{buildroot}%{_datadir}/fish/completions/kind.fish
 %gopkgfiles
 
 %changelog
+* Tue Jan 19 22:11:00 EST 2021 anthr76 <hello@anthonyrabbito.com> - 0-2
+- Disable tests
+* Tue Jan 19 21:50:00 EST 2021 anthr76 <hello@anthonyrabbito.com> - 0.9.0-6
+- Lock versioning.
 * Tue Jan 19 21:46:00 EST 2021 anthr76 <hello@anthonyrabbito.com> - 0-1
 - Add a snapshot.
 * Tue Jan 19 20:12:00 EST 2021 anthr76 <hello@anthonyrabbito.com> - 0.9.0-5
