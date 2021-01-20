@@ -1,6 +1,6 @@
 # copr/kubernetes-extras
 
-Fedora Copr repository for Kubernetes based apps. Please help contribute to add and update rpm specs based off Fedora's packaing guide lines.
+Fedora Copr repository for Kubernetes based apps with reproducible builds. Please help contribute to add and update rpm specs based off Fedora's packaing guide lines.
 
 TO-DO:
 - Add OBS repo for OpenSUSE Tumbleweed based on SUSE packaging guidelines
