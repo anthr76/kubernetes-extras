@@ -1,5 +1,5 @@
 %bcond_with check
-%bcond_without snapshot
+%bcond_with snapshot
 
 %global goipath         sigs.k8s.io/kind
 %global forgeurl	https://github.com/kubernetes-sigs/kind
@@ -14,7 +14,7 @@ Release:        	2%{?dist}
 %global tag             v0.9.0
 Version:                0.9.0
 %gometa
-Release:        	6%{?dist}
+Release:        	7%{?dist}
 %endif
 
 %global common_description %{expand:
@@ -121,6 +121,8 @@ install -D -p -m 0644 %{S:3} %{buildroot}%{_datadir}/fish/completions/kind.fish
 %gopkgfiles
 
 %changelog
+* Tue Jan 19 22:16:00 EST 2021 anthr76 <hello@anthonyrabbito.com> - 0.9.0-7
+- Lock versioning.
 * Tue Jan 19 22:11:00 EST 2021 anthr76 <hello@anthonyrabbito.com> - 0-2
 - Disable tests
 * Tue Jan 19 21:50:00 EST 2021 anthr76 <hello@anthonyrabbito.com> - 0.9.0-6
