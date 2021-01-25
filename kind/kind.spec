@@ -11,10 +11,10 @@
 Version:                0
 Release:        	2%{?dist}
 %else
-%global tag             v0.9.0
-Version:                0.9.0
+%global tag             v0.10.0
+Version:                0.10.0
 %gometa
-Release:        	7%{?dist}
+Release:        	1%{?dist}
 %endif
 
 %global common_description %{expand:
@@ -121,6 +121,8 @@ install -D -p -m 0644 %{S:3} %{buildroot}%{_datadir}/fish/completions/kind.fish
 %gopkgfiles
 
 %changelog
+* Sun Jan 24 22:57:00 EST 2021 antht76 <hello@anthonyrabbito.com> - 0.10.0-1
+- Inital v0.10.0 release
 * Tue Jan 19 22:16:00 EST 2021 anthr76 <hello@anthonyrabbito.com> - 0.9.0-7
 - Lock versioning.
 * Tue Jan 19 22:11:00 EST 2021 anthr76 <hello@anthonyrabbito.com> - 0-2
