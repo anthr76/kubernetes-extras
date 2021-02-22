@@ -10,7 +10,7 @@ The state of Dev-Ops CLI based application availability on Linux is *rough* to s
 
 TO-DO
 
-#### Usage [^1]
+#### Usage [<sup>1</sup>](#1)
 
 [OBS Page](https://build.opensuse.org/project/show/home:anthr76:kubernetes)
 
@@ -22,6 +22,8 @@ Fedora 33
 # dnf config-manager --add-repo https://download.opensuse.org/repositories/home:anthr76:kubernetes/Fedora_33/home:anthr76:kubernetes.repo
 # dnf install <package>
 ```
+
+![Ubuntu](https://software.opensuse.org/assets/download/ubuntu-9e0d2c7e38ba8b47f1af210ec318da4ee7195968bc0dab78d2c01d013806c143.png)
 
 Ubuntu 20.04/Pop_OS 20.04
 
@@ -41,4 +43,4 @@ $ curl -fsSL https://download.opensuse.org/repositories/home:anthr76:kubernetes/
 # apt install <package>
 ```
 
-[^1]: More exotic distros can be found [here](https://software.opensuse.org//download.html?project=home%3Aanthr76%3Akubernetes&package=flux) substitute flux for another package.
+<a class="anchor" id="1"></a> More exotic distros can be found [here](https://software.opensuse.org//download.html?project=home%3Aanthr76%3Akubernetes&package=flux) substitute flux for another package.
